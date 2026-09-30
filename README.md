@@ -83,7 +83,7 @@ RFM analysis identified several commercially useful customer groups:
 
 ## Power BI Dashboard
 
-![alt text](../images/olist_dashboard.png)
+![Olist E-Commerce Performance Dashboard](images/olist_dashboard.png)
 
 ## Tools & Technologies
 
