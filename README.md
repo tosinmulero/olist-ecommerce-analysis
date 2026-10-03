@@ -1,172 +1,167 @@
-# Olist E-Commerce Analytics
+<p align="center">
+  <img src="images/readme/hero.svg" alt="Olist E-Commerce Analytics" width="100%">
+</p>
 
-## Project Overview
+<p align="center">
+  <img src="https://img.shields.io/badge/PostgreSQL-336791?style=flat-square" alt="PostgreSQL">
+  <img src="https://img.shields.io/badge/SQL-0EA5E9?style=flat-square" alt="SQL">
+  <img src="https://img.shields.io/badge/Power%20BI-F2C811?style=flat-square" alt="Power BI">
+  <img src="https://img.shields.io/badge/DAX-7C3AED?style=flat-square" alt="DAX">
+  <img src="https://img.shields.io/badge/Power%20Query-10B981?style=flat-square" alt="Power Query">
+  <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square" alt="GitHub">
+</p>
 
-This project analyses the Olist Brazilian e-commerce dataset to uncover insights into sales performance, customer behaviour, product categories, delivery performance, payment methods and customer segmentation.
+<p align="center"><b>PostgreSQL • SQL • Power BI • DAX • RFM • Logistics Analytics</b></p>
 
-The analysis was completed using PostgreSQL for data modelling and SQL analysis, with Power BI used to build an interactive business dashboard.
+An end-to-end e-commerce analytics case study using the Olist Brazilian marketplace dataset to evaluate sales, customer retention, products, logistics, delivery reliability, review scores and RFM segmentation.
 
-The main analysis period covers delivered orders from January 2017 to August 2018 to ensure consistent monthly comparisons.
+---
 
-## Business Questions
+## 🎯 Executive Snapshot
 
-This project explores:
+| KPI | Result |
+| --- | ---: |
+| Delivered orders | **96,211** |
+| Unique customers | **93,104** |
+| Merchandise revenue | **R$13.18M** |
+| Freight charged | **R$2.19M** |
+| Total order value | **R$15.37M** |
+| Average order value | **R$159.79** |
+| Repeat customers | **3.00%** |
+| Late-delivery rate | **8.13%** |
+| Cross-state orders | **64.15%** |
 
-- How did sales and order volume change over time?
-- Which product categories generated the most revenue?
-- Which Brazilian states generated the most customer demand?
-- Where are sellers geographically concentrated?
-- How does cross-state shipping affect freight costs and delivery times?
-- How strongly is late delivery associated with customer review scores?
-- Which payment methods are most commonly used?
-- How does credit-card instalment behaviour vary with purchase value?
-- How many customers make repeat purchases?
-- Which customer segments contribute the most observed spend?
+---
 
+## 🧩 Business Problem
 
-## Key Performance Indicators
+The project asks:
 
-- **Delivered Orders:** 96,211
-- **Unique Customers:** 93,104
-- **Merchandise Revenue:** R$13,181,027.13
-- **Freight Charged:** R$2,192,092.88
-- **Total Order Value:** R$15,373,120.01
-- **Average Order Value:** R$159.79
-- **Repeat Customers:** 3.00%
-- **Late Delivery Rate:** 8.13%
-- **Cross-State Orders:** 64.15%
+1. How did sales and delivered-order volume change over time?
+2. Which product categories generated the most revenue?
+3. Where is customer demand concentrated?
+4. How does cross-state shipping affect freight and delivery time?
+5. How strongly are delays associated with review scores?
+6. How many customers repeat-purchase?
+7. Which RFM segments represent the strongest commercial opportunities?
 
-## Key Findings
+---
 
-### Sales Performance
+## 🏗️ Analytical Architecture
 
-- November 2017 recorded the highest monthly total order value at approximately **R$1.15 million**.
-- Delivered orders increased by approximately **139.94%** between January–August 2017 and January–August 2018.
-- Total order value increased by approximately **143.36%** over the same comparable period.
+```mermaid
+flowchart LR
+    A["Olist relational data"] --> B["PostgreSQL data model"]
+    B --> C["SQL quality checks"]
+    C --> D["Business analysis + reusable views"]
+    D --> E["Power BI + DAX"]
+    E --> F["Commercial dashboard"]
+    F --> G["Retention + logistics recommendations"]
+```
 
-### Product Performance
+Full design: [`docs/TECHNICAL_ARCHITECTURE.md`](docs/TECHNICAL_ARCHITECTURE.md)
 
-- **Health & Beauty** generated the highest merchandise revenue at approximately **R$1.23 million**.
-- **Watches & Gifts** ranked second by merchandise revenue at approximately **R$1.16 million**, despite ranking lower by unit volume.
-- **Bed, Bath & Table** recorded the highest item volume with **10,945 items sold**.
-- The top five product categories generated approximately **39.88%** of merchandise revenue.
+---
 
-### Customer Behaviour
-
-- **97.00%** of customers placed only one delivered order.
-- Only **3.00%** of customers were repeat purchasers.
-- Repeat customers generated approximately **R$308.55 average observed spend per customer**, compared with **R$160.69** for one-time customers.
-
-### Logistics Performance
-
-- **64.15%** of delivered orders involved at least one seller located in a different state from the customer.
-- Cross-state orders had average freight charges of **R$26.94**, compared with **R$15.35** for same-state orders.
-- Cross-state deliveries took an average of **15.12 days**, compared with **7.92 days** for same-state deliveries.
-- The late-delivery rate was **9.27%** for cross-state orders compared with **6.09%** for same-state orders.
-
-### Customer Satisfaction
-
-- On-time or early deliveries received an average review score of **4.30/5**.
-- Late deliveries received an average review score of only **2.57/5**.
-- **53.98%** of late deliveries received review scores of 1–2, compared with only **9.17%** of on-time deliveries.
-- Orders delivered more than 8 days late had an average review score of **1.73/5**.
-
-### Customer Segmentation
-
-RFM analysis identified several commercially useful customer groups:
-
-- **Recent High-Value Customers:** 14,410 customers contributing **28.31%** of observed customer spend.
-- **Older High-Value Customers:** 13,865 customers contributing **26.54%**.
-- **Inactive High-Value Customers:** 6,738 customers contributing **13.43%**.
-- **Recent Repeat Customers:** 1,197 customers.
-- **At-Risk Repeat Customers:** 1,592 customers.
-
-## Power BI Dashboard
+## 📊 Dashboard
 
 ![Olist E-Commerce Performance Dashboard](images/olist_dashboard.png)
 
-## Tools & Technologies
+---
 
-- **PostgreSQL** — relational database design, data quality checks and SQL analysis
-- **SQL** — joins, CTEs, window functions, aggregation, conditional logic and reusable views
-- **Power BI** — interactive dashboard development and KPI reporting
-- **DAX** — calculated measures for business KPIs
-- **Power Query** — data type validation and model preparation
-- **Git & GitHub** — version control and portfolio publishing
-- **VS Code** — project development and documentation
+## 🔎 Key Findings
 
-## Project Structure
+- **November 2017** recorded the highest monthly total order value at approximately **R$1.15M**.
+- Delivered orders increased by approximately **139.94%** between Jan–Aug 2017 and Jan–Aug 2018.
+- Total order value increased by approximately **143.36%** over the same comparable period.
+- **Health & Beauty** generated the highest merchandise revenue at approximately **R$1.23M**.
+- **97% of customers** placed only one delivered order; repeat purchase was just **3%**.
+- Cross-state orders averaged **R$26.94** freight versus **R$15.35** for same-state orders.
+- Cross-state deliveries averaged **15.12 days** versus **7.92 days** for same-state deliveries.
+- Late deliveries averaged **2.57/5** reviews versus **4.30/5** for on-time or early deliveries.
+- Orders delivered more than eight days late averaged just **1.73/5**.
+
+---
+
+## 💼 Business Recommendations
+
+- Prioritise proactive intervention for orders at risk of missing estimated delivery dates.
+- Review cross-state routing and fulfilment economics.
+- Re-engage older and inactive high-value RFM segments.
+- Test retention initiatives designed to improve repeat-purchase behaviour.
+- Protect high-revenue categories with closer inventory, seller and fulfilment monitoring.
+- Track freight-to-order-value ratios for commercially inefficient transactions.
+
+---
+
+## 🧠 SQL & Analytical Engineering
+
+The SQL layer demonstrates:
+
+- primary/foreign-key validation;
+- null and duplicate checks;
+- timestamp-consistency checks;
+- delivered-order filtering for comparable commercial analysis;
+- order-level aggregation to prevent double counting;
+- use of `customer_unique_id` for repeat-customer analysis;
+- review aggregation before satisfaction analysis;
+- CTEs, conditional aggregation and window functions;
+- reusable PostgreSQL views for Power BI;
+- custom RFM frequency logic appropriate to a dataset where 97% of customers purchased once.
+
+---
+
+## 🧰 Technology Stack
+
+<p>
+  <img src="https://img.shields.io/badge/PostgreSQL-336791?style=flat-square" alt="PostgreSQL">
+  <img src="https://img.shields.io/badge/SQL-0EA5E9?style=flat-square" alt="SQL">
+  <img src="https://img.shields.io/badge/Power%20BI-F2C811?style=flat-square" alt="Power BI">
+  <img src="https://img.shields.io/badge/DAX-7C3AED?style=flat-square" alt="DAX">
+  <img src="https://img.shields.io/badge/Power%20Query-10B981?style=flat-square" alt="Power Query">
+  <img src="https://img.shields.io/badge/Git-F05032?style=flat-square" alt="Git">
+  <img src="https://img.shields.io/badge/GitHub-181717?style=flat-square" alt="GitHub">
+</p>
+
+**PostgreSQL · SQL · Power BI · DAX · Power Query · RFM · Git · GitHub · VS Code**
+
+---
+
+## ✅ Quality & Reproducibility
+
+The repository includes an automated **Portfolio Quality** workflow validating required SQL, dashboard and documentation assets.
+
+---
+
+## ⚖️ Methodology & Limitations
+
+- Comparable monthly analysis is restricted to **January 2017–August 2018** because boundary months are incomplete.
+- Revenue, customer-value and delivery-performance analysis uses delivered orders for consistency.
+- Repeat-customer analysis uses `customer_unique_id`, not order-level `customer_id`.
+- RFM segmentation reflects behaviour inside the observed period rather than lifetime customer value.
+- Delivery relationships are observational and do not establish causality.
+
+---
+
+## 📁 Repository Structure
 
 ```text
 olist-ecommerce-analysis/
-│
-├── data/
-│   ├── raw/
-│   └── processed/
-│
+├── .github/workflows/portfolio-quality.yml
+├── docs/
 ├── images/
+│   ├── readme/hero.svg
 │   └── olist_dashboard.png
-│
-├── notebooks/
-│
 ├── powerbi/
-│   └── Olist_Ecommerce_Analysis.pbix
-│
 ├── sql/
 │   ├── 01_data_quality_checks.sql
 │   └── 02_business_analysis.sql
-│
 └── README.md
+```
 
+---
 
-## SQL Methodology
+## 👨🏾‍💻 Author
 
-The SQL analysis was designed to keep calculations reproducible and business-focused.
-
-Key steps included:
-
-- Validating primary keys, foreign keys, null values and duplicate records.
-- Checking timestamp consistency and identifying invalid delivery sequences.
-- Restricting comparable monthly analysis to **January 2017 – August 2018** because the boundary months in the source data were incomplete.
-- Using only **delivered orders** for revenue, customer-value and delivery-performance analysis.
-- Aggregating order-item data to the order level where necessary to prevent double counting.
-- Using `customer_unique_id` rather than `customer_id` for repeat-customer analysis.
-- Aggregating multiple review records to the order level before analysing customer satisfaction.
-- Using CTEs, conditional aggregation, window functions and PostgreSQL views to create reusable analytical datasets for Power BI.
-- Creating custom RFM frequency bands because **97% of customers placed only one delivered order**, making standard frequency quintiles unsuitable.
-
-## Business Recommendations
-
-### 1. Prioritise Delivery Reliability
-
-Late delivery is strongly associated with poorer customer reviews. Olist should closely monitor orders at risk of missing the estimated delivery date and prioritise intervention before delays become severe.
-
-### 2. Review Cross-State Logistics
-
-Cross-state orders show higher freight charges, longer delivery times and higher late-delivery rates. Logistics planning could focus on reducing unnecessary long-distance fulfilment and improving seller-to-customer routing where operationally feasible.
-
-### 3. Re-Engage High-Value Customers
-
-The RFM analysis identified substantial groups of **Older High-Value** and **Inactive High-Value Customers**. These customers represent potential targets for retention and re-engagement campaigns.
-
-### 4. Improve Repeat Purchase Behaviour
-
-Only **3% of customers** made repeat purchases during the observed period. Customer retention initiatives, post-purchase engagement and personalised offers could be evaluated as ways to increase repeat purchasing.
-
-### 5. Protect High-Revenue Product Categories
-
-Health & Beauty, Watches & Gifts, Bed Bath & Table, Sports & Leisure, and Computers & Accessories contribute a substantial share of merchandise revenue. These categories should receive close attention in inventory, seller performance and fulfilment monitoring.
-
-### 6. Monitor High-Freight Orders
-
-Freight represented a larger proportion of merchandise value for cross-state orders. Olist could monitor freight-to-order-value ratios to identify transactions where shipping charges may disproportionately affect customer value.
-
-## Conclusion
-
-This project demonstrates an end-to-end e-commerce analytics workflow using PostgreSQL, SQL, Power BI, DAX and Power Query.
-
-The analysis found that Olist experienced substantial growth during the comparable 2017–2018 period, but customer retention remained low. Delivery performance also emerged as an important operational factor: cross-state orders were more expensive to ship, took longer to arrive and were more likely to be late, while increasingly severe delays were associated with sharply lower customer review scores.
-
-The RFM analysis further identified distinct high-value, repeat and inactive customer groups that can support more targeted customer-retention strategies.
-
-Overall, the project demonstrates how transactional e-commerce data can be transformed into commercially relevant insights across sales, customers, products, payments and logistics.
+**Oluwatosin Oluwaseun Mulero**  
+**Data Analyst | Data Scientist | Business Intelligence**

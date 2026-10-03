@@ -1,4 +1,4 @@
-﻿# Raw datasets
+# Raw datasets
 data/raw/
 
 # Processed datasets
@@ -13,3 +13,10 @@ __pycache__/
 
 # VS Code settings
 .vscode/
+
+# Local development
+.venv/
+venv/
+backups/
+.DS_Store
+Thumbs.db

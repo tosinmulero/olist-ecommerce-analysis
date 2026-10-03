@@ -1,0 +1,65 @@
+name: Portfolio Quality
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Validate portfolio structure
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import json
+
+          required = ["README.md", "sql/01_data_quality_checks.sql", "sql/02_business_analysis.sql", "images/olist_dashboard.png", "images/readme/hero.svg", "docs/TECHNICAL_ARCHITECTURE.md", "docs/RECRUITER_PROJECT_SUMMARY.md"]
+          missing = [p for p in required if not Path(p).exists()]
+          if missing:
+              raise SystemExit("Missing required files: " + ", ".join(missing))
+
+          empty_sql = [
+              str(p) for p in Path(".").rglob("*.sql")
+              if p.is_file() and p.stat().st_size == 0
+          ]
+          if empty_sql:
+              raise SystemExit("Empty SQL files: " + ", ".join(empty_sql))
+
+          broken_notebooks = []
+          for p in Path(".").rglob("*.ipynb"):
+              try:
+                  json.loads(p.read_text(encoding="utf-8"))
+              except Exception as e:
+                  broken_notebooks.append(f"{p}: {e}")
+
+          if broken_notebooks:
+              raise SystemExit("Invalid notebooks: " + " | ".join(broken_notebooks))
+
+          readme = Path("README.md").read_text(encoding="utf-8")
+          required_sections = [
+              "Executive Snapshot",
+              "Analytical Architecture",
+              "Key Findings",
+              "Methodology & Limitations"
+          ]
+          missing_sections = [s for s in required_sections if s not in readme]
+          if missing_sections:
+              raise SystemExit("README missing sections: " + ", ".join(missing_sections))
+
+          print("Portfolio quality validation passed.")
+          PY
